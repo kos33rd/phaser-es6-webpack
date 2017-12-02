@@ -20,8 +20,8 @@ export default class extends Phaser.State {
 
     this.player = new Player({
       game: this.game,
-      x: this.world.centerX,
-      y: this.world.centerY,
+      x: this.world.left + 10,
+      y: this.world.bottom - 120,
       asset: 'player'
     })
 
@@ -41,6 +41,15 @@ export default class extends Phaser.State {
   render () {
     if (__DEV__) {
       this.game.debug.spriteInfo(this.player, 32, 32)
+    }
+
+    if (!this.player.alive) {
+      var style = { font: "65px", fill: "#ff0000", align: "center" };
+      var text = this.game.add.text(this.game.width / 2 - 150, this.game.height / 2, "YOU DIED", style);
+      text.fixedToCamera = true
+
+      // let text = this.game.add.text(this.world.centerX, this.world.centerY, 'YOU DIED', { font: '32px Arial', fill: '#ffffff', align: 'center' })
+      // debugger
     }
   }
 }
