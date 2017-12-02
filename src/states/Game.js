@@ -2,6 +2,7 @@
 import Phaser from 'phaser'
 import Player from '../sprites/Player'
 import BlockDamage from '../sprites/BlockDamage'
+import Block from '../sprites/Block'
 
 export default class extends Phaser.State {
   init () {}
@@ -17,41 +18,48 @@ export default class extends Phaser.State {
     //  A simple background for our game
     this.add.sprite(0, 0, 'background')
 
-    this.cotstructGround()
-
-    this.player = new Player({
+    this.game.player = new Player({
       game: this.game,
       x: this.world.centerX,
       y: this.world.centerY,
       asset: 'player'
     })
 
-    this.game.add.existing(this.player)
-    this.camera.follow(this.player)
+    this.game.add.existing(this.game.player)
+    this.camera.follow(this.game.player)
+
+    this.cotstructGround()
   }
 
   cotstructGround () {
     this.game.ground = this.add.group()
     this.game.ground.enableBody = true
+
     for (var index = 0; index < 39; index += 1) {
       if (index < 10 || index > 17) {
-        var block = this.game.ground.create(index * 50, this.world.height - 50, 'block')
-        block.body.immovable = true
+        var x = this.game.ground.add(new Block({
+          game: this.game,
+          x: index * 50,
+          y: this.world.height - 50,
+          asset: 'block'
+        }))
+        // var block = this.game.ground.create(index * 50, this.world.height - 50, 'block')
+        // block.body.immovable = true
       }
     }
+
     for (var index = 10; index < 18; index += 1) {
-      var blockLava = new BlockDamage({
+      this.game.ground.add(new BlockDamage({
         game: this.game,
         x: index * 50,
         y: this.world.height - 50
-      })
-      this.game.add.existing(blockLava)
+      }))
     }
   }
 
   render () {
     if (__DEV__) {
-      this.game.debug.spriteInfo(this.player, 32, 32)
+      this.game.debug.spriteInfo(this.game.player, 32, 32)
     }
   }
 }

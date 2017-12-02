@@ -25,7 +25,6 @@ export default class extends Phaser.Sprite {
     this.game.world.wrap(this, 0, true)
     const hitPlatform = this.game.physics.arcade.collide(this, this.game.ground)
     controlPlayer(this.cursor, hitPlatform, this)
-    this.damage(0.01)
     this.healthbar.width = (this.health / this.maxHealth) * this.healthbar.texture.width
   }
 }
