@@ -4,9 +4,9 @@ import { controlPlayer } from '../controls/Player'
 export default class extends Phaser.Sprite {
   constructor ({ game, x, y, asset, cursor }) {
     super(game, x, y, asset)
-    this.scale.setTo(0.1, 0.1)
+    this.scale.setTo(0.11, 0.11)
     game.physics.arcade.enable(this)
-    this.body.bounce.y = 0.2
+    this.body.bounce.y = 0
     this.body.gravity.y = 800
     this.body.collideWorldBounds = true
     this.cursor = game.input.keyboard.createCursorKeys()
