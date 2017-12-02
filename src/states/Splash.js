@@ -18,6 +18,7 @@ export default class extends Phaser.State {
     this.load.image('block', 'assets/images/block-black.svg')
     this.load.image('background', 'assets/images/background-town.jpg')
     this.load.image('healthbar', 'assets/images/healthbar.png')
+    this.load.image('finish', 'assets/images/finish.png')
   }
 
   create () {

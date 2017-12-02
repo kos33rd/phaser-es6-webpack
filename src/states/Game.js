@@ -1,6 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Player from '../sprites/Player'
+import Finish from '../sprites/Finish'
 
 export default class extends Phaser.State {
   init () {}
@@ -25,6 +26,13 @@ export default class extends Phaser.State {
       asset: 'player'
     })
 
+    this.finish = new Finish({
+      game: this.game,
+      x: this.world.right - 100,
+      y: this.world.bottom - 150
+    })
+
+    this.game.add.existing(this.finish)
     this.game.add.existing(this.player)
     this.camera.follow(this.player)
   }
@@ -43,13 +51,14 @@ export default class extends Phaser.State {
       this.game.debug.spriteInfo(this.player, 32, 32)
     }
 
-    if (!this.player.alive) {
-      var style = { font: "65px", fill: "#ff0000", align: "center" };
-      var text = this.game.add.text(this.game.width / 2 - 150, this.game.height / 2, "YOU DIED", style);
-      text.fixedToCamera = true
+    if (this.game.physics.arcade.overlap(this.player, this.finish)) {
+      const winnerText = this.game.add.text(this.game.width / 2 - 150, this.game.height / 2, "YOU'RE WINNER", { font: "65px Arial", fill: "#ffffff", align: "center" })
+      winnerText.fixedToCamera = true
+    }
 
-      // let text = this.game.add.text(this.world.centerX, this.world.centerY, 'YOU DIED', { font: '32px Arial', fill: '#ffffff', align: 'center' })
-      // debugger
+    if (!this.player.alive && !this.gameOverText) {
+      this.gameOverText = this.game.add.text(this.game.width / 2 - 150, this.game.height / 2, "YOU DIED", { font: "65px", fill: "#ff0000", align: "center" })
+      this.gameOverText.fixedToCamera = true
     }
   }
 }
