@@ -1,6 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Player from '../sprites/Player'
+import BlockDamage from '../sprites/BlockDamage'
 
 export default class extends Phaser.State {
   init () {}
@@ -34,8 +35,18 @@ export default class extends Phaser.State {
     this.game.ground = this.add.group()
     this.game.ground.enableBody = true
     for (var index = 0; index < 39; index += 1) {
-      var block = this.game.ground.create(index * 50, this.world.height - 50, 'block')
-      block.body.immovable = true
+      if (index < 10 || index > 17) {
+        var block = this.game.ground.create(index * 50, this.world.height - 50, 'block')
+        block.body.immovable = true
+      }
+    }
+    for (var index = 10; index < 18; index += 1) {
+      var blockLava = new BlockDamage({
+        game: this.game,
+        x: index * 50,
+        y: this.world.height - 50
+      })
+      this.game.add.existing(blockLava)
     }
   }
 
