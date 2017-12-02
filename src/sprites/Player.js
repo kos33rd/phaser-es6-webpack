@@ -12,8 +12,8 @@ export default class extends Phaser.Sprite {
     this.body.collideWorldBounds = true
     this.cursor = game.input.keyboard.createCursorKeys()
 
-    this.animations.add('left', [1, 2, 3], 10, true)
-    this.animations.add('right', [5, 6, 7, 8], 10, true)
+    this.animations.add('left', [8, 9, 10, 11], 10, true)
+    this.animations.add('right', [12, 13, 14, 15], 10, true)
   }
 
   update () {

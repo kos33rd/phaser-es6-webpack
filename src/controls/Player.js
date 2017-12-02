@@ -19,11 +19,11 @@ export const controlPlayer = (cursor, player) => {
       {
           //  Stand still
           player.animations.stop();
-          player.frame = 4;
+          player.frame = 0;
       }
 
       //  Allow the player to jump if they are touching the ground.
-      if (cursor.up.isDown && player.body.touching.down && hitPlatform)
+      if (cursor.up.isDown && player.body.touching.down)
       {
           player.body.velocity.y = -350;
       }
