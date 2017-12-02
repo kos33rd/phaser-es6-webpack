@@ -10,7 +10,6 @@ export default class extends Block {
   }
 
   hitDamage (block, player) {
-    console.log(block, player)
     if (block.damage > 0) {
       player.damage(block.damage)
     }
