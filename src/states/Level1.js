@@ -9,6 +9,9 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
+    const music = this.game.add.audio('opening');
+    music.loopFull()
+
     this.physics.startSystem(Phaser.Physics.ARCADE)
 
     this.world.setBounds(0, 0, 1920, 1130)

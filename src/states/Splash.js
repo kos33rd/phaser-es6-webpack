@@ -23,6 +23,11 @@ export default class extends Phaser.State {
     this.load.image('background', 'assets/images/background-town.jpg')
     this.load.image('healthbar', 'assets/images/healthbar.png')
     this.load.image('finish', 'assets/images/finish.png')
+
+    /* На время разработки отрубим музыку */
+    if (!__DEV__) {
+      this.load.audio('opening', 'assets/audio/opening.ogg');
+    }
   }
 
   create () {
