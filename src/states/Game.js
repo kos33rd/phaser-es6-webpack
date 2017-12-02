@@ -1,9 +1,9 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
-import Player from '../sprites/Player'
-import Finish from '../sprites/Finish'
-import BlockDamage from '../sprites/BlockDamage'
-import Block from '../sprites/Block'
+import Player from '../objects/Player'
+import Finish from '../objects/Finish'
+import FireBlock from '../objects/FireBlock'
+import Block from '../objects/Block'
 
 export default class extends Phaser.State {
   init () {}
@@ -56,7 +56,7 @@ export default class extends Phaser.State {
     }
 
     for (var indx = 10; indx < 18; indx += 1) {
-      this.game.ground.add(new BlockDamage({
+      this.game.ground.add(new FireBlock({
         game: this.game,
         x: indx * 50,
         y: this.world.height - 50

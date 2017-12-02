@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { controlPlayer } from '../controls/Player'
+import _ from 'lodash'
 
 export default class extends Phaser.Sprite {
   constructor ({ game, x, y, asset, cursor }) {
@@ -22,6 +23,7 @@ export default class extends Phaser.Sprite {
 
     this.healthbar = this.game.add.sprite(10, 10, 'healthbar')
     this.healthbar.fixedToCamera = true
+    this.phobias = {}
   }
 
   update () {
@@ -29,5 +31,22 @@ export default class extends Phaser.Sprite {
     const hitPlatform = this.game.physics.arcade.collide(this, this.game.ground)
     controlPlayer(this.cursor, hitPlatform, this)
     this.healthbar.width = (this.health / this.maxHealth) * this.healthbar.texture.width
+    this.affectPhobias()
   }
+
+  addPhobia (Phobia) {
+    if (!_.get(this.phobias, Phobia.name, false)) {
+      const playerPhobia = new Phobia({
+        player: this
+      })
+      this.phobias[Phobia.name] = playerPhobia
+    }
+  }
+
+  affectPhobias (){
+    _.map(this.phobias, (phobia) => {
+      phobia.affect()
+    })
+  }
+
 }
