@@ -46,21 +46,19 @@ export default class extends Phaser.State {
 
     for (var index = 0; index < 39; index += 1) {
       if (index < 10 || index > 17) {
-        var x = this.game.ground.add(new Block({
+        this.game.ground.add(new Block({
           game: this.game,
           x: index * 50,
           y: this.world.height - 50,
           asset: 'block'
         }))
-        // var block = this.game.ground.create(index * 50, this.world.height - 50, 'block')
-        // block.body.immovable = true
       }
     }
 
-    for (var index = 10; index < 18; index += 1) {
+    for (var indx = 10; indx < 18; indx += 1) {
       this.game.ground.add(new BlockDamage({
         game: this.game,
-        x: index * 50,
+        x: indx * 50,
         y: this.world.height - 50
       }))
     }
