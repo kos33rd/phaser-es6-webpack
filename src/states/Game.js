@@ -1,6 +1,7 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
 import Mushroom from '../sprites/Mushroom'
+import Player from '../sprites/Player'
 
 export default class extends Phaser.State {
   init () {}
@@ -16,6 +17,8 @@ export default class extends Phaser.State {
     banner.smoothed = false
     banner.anchor.setTo(0.5)
 
+    const cursor = this.game.input.keyboard.createCursorKeys();
+
     this.mushroom = new Mushroom({
       game: this.game,
       x: this.world.centerX,
@@ -23,7 +26,17 @@ export default class extends Phaser.State {
       asset: 'mushroom'
     })
 
+    this.player = new Player({
+      game: this.game,
+      x: this.world.centerX,
+      y: this.world.centerY,
+      asset: 'player',
+      cursor: cursor
+    })
+
+    this.game.add.existing(this.player)
     this.game.add.existing(this.mushroom)
+
   }
 
   render () {

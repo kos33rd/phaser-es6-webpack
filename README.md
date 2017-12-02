@@ -1,3 +1,26 @@
+# Идея игры
+
+2D-Платформер, чем дальше игрок продвигается, тем больше страхов и флэшбэков у него.
+У персонажа есть набор фобий, которые добавляются в процессе игры.
+
+Уровень паники - как заполнится, теряешь управление.
+
+Герой войны
+	Темнота,
+	Флешбэк от убийства
+	Убийство невиновного и сожаление об этом
+	Огонь - боязнь огня или флешбэки от того, что не спас кого-то из пожара
+  Вода - ...
+
+
+Стиль - минимализм, черно-белая гамма.
+
+
+
+
+
+
+
 # Phaser + ES6 + Webpack.
 #### A bootstrap project to create games with Phaser + ES6 + Webpack.
 
@@ -13,7 +36,7 @@
 - Webpack ready
 - WebFont Loader
 
-## Typescript 
+## Typescript
 If you need typescript support checkout the ```typescript``` branch. Thanks to @MatsMaker
 
 # Setup
@@ -38,7 +61,7 @@ Navigate to the cloned repo's directory.
 
 Run:
 
-```npm install``` 
+```npm install```
 
 or if you chose yarn, just run ```yarn```
 
@@ -67,7 +90,7 @@ Make sure to uncomment the cordova.js file in the src/index.html and to update c
 More informations about the cordova configuration:
 https://cordova.apache.org/docs/en/latest/config_ref/
 
-There is 3 platforms actually tested and supported : 
+There is 3 platforms actually tested and supported :
 - browser
 - ios
 - android

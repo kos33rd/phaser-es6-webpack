@@ -14,6 +14,7 @@ export default class extends Phaser.State {
     // load your assets
     //
     this.load.image('mushroom', 'assets/images/mushroom2.png')
+    game.load.spritesheet('player', 'assets/images/player.png', 400, 600);
   }
 
   create () {
