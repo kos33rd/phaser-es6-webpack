@@ -26,7 +26,6 @@ export default class extends Phaser.State {
     })
 
     this.game.add.existing(this.player)
-
     this.camera.follow(this.player)
   }
 
