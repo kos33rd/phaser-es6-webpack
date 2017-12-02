@@ -17,34 +17,23 @@ export default class extends Phaser.State {
     //  A simple background for our game
     this.add.sprite(0, 0, 'background')
 
-    const cursor = this.game.input.keyboard.createCursorKeys();
-
-    this.mushroom = new Mushroom({
-      game: this.game,
-      x: this.world.centerX,
-      y: this.world.centerY,
-      asset: 'mushroom'
-    })
+    this.cotstructGround()
 
     this.player = new Player({
       game: this.game,
       x: this.world.centerX,
       y: this.world.centerY,
-      asset: 'player',
-      cursor: cursor
+      asset: 'player'
     })
 
     this.game.add.existing(this.player)
-    this.game.add.existing(this.mushroom)
 
     this.camera.follow(this.player)
-    this.cotstructGround()
   }
 
   cotstructGround () {
     this.ground = this.add.group()
     this.ground.enableBody = true
-    // this.ground.body.immovable = true
     for (var index = 0; index < 39; index += 1) {
       var block = this.ground.create(index * 50, this.world.height - 50, 'block')
       block.body.immovable = true
@@ -53,7 +42,7 @@ export default class extends Phaser.State {
 
   render () {
     if (__DEV__) {
-      this.game.debug.spriteInfo(this.mushroom, 32, 32)
+      this.game.debug.spriteInfo(this.player, 32, 32)
     }
   }
 }
