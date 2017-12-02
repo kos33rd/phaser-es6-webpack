@@ -5,14 +5,15 @@ export const controlPlayer = (cursor, onPlatform, player) => {
 
   let runSpeed = playerBaseRunSpeed
 
-  if (cursor.left.shiftKey || cursor.right.shiftKey) {
-    runSpeed *= 5
-  }
   //  Reset the players velocity (movement)
   player.body.velocity.x = 0
 
   if (cursor.left.isDown) {
     //  Move to the left
+
+    if(cursor.left.shiftKey ) {
+      runSpeed *= 5
+    }
     player.body.velocity.x = -runSpeed
 
     if (onPlatform) {
@@ -23,6 +24,10 @@ export const controlPlayer = (cursor, onPlatform, player) => {
 
   } else if (cursor.right.isDown) {
     //  Move to the right
+
+    if (cursor.right.shiftKey) {
+      runSpeed *= 5
+    }
     player.body.velocity.x = runSpeed
 
     if(onPlatform) {
