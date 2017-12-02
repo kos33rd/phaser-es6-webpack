@@ -19,7 +19,6 @@ export const controlPlayer = (cursor, player) => {
       {
           //  Stand still
           player.animations.stop();
-
           player.frame = 4;
       }
 

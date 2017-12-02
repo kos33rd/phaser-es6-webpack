@@ -19,6 +19,7 @@ export default class extends Phaser.Sprite {
   }
 
   update () {
+    this.game.world.wrap(this, 0, true)
     controlPlayer(this.cursor, this)
   }
 }
