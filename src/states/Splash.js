@@ -18,12 +18,14 @@ export default class extends Phaser.State {
     this.load.image('block', 'assets/images/block-black.svg')
     this.load.image('block-lava', 'assets/images/block-lava.svg')
     this.load.spritesheet('block-lava2', 'assets/images/lava3.png', 50, 50)
+    this.load.spritesheet('block-spikes', 'assets/images/spikes.png', 50, 50)
+
     this.load.image('background', 'assets/images/background-town.jpg')
     this.load.image('healthbar', 'assets/images/healthbar.png')
     this.load.image('finish', 'assets/images/finish.png')
   }
 
   create () {
-    this.state.start('Game')
+    this.state.start('Level1')
   }
 }

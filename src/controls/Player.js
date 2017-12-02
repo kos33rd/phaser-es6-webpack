@@ -1,5 +1,5 @@
 const playerBaseRunSpeed = 150
-const playerBaseJumpSpeed = 350
+const playerBaseJumpSpeed = 450
 
 export const controlPlayer = (cursor, onPlatform, player) => {
 
@@ -44,6 +44,5 @@ export const controlPlayer = (cursor, onPlatform, player) => {
   //  Allow the player to jump if they are touching the ground.
   if (cursor.up.isDown && player.body.touching.down && onPlatform) {
     player.body.velocity.y = -playerBaseJumpSpeed
-    player.damage(10)
   }
 }
