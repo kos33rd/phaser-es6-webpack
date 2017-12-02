@@ -5,11 +5,22 @@ export const controlPlayer = (cursor, hitPlatform, player) => {
   if (cursor.left.isDown) {
     //  Move to the left
     player.body.velocity.x = -150
-    player.animations.play('left')
+
+    if (hitPlatform) {
+      player.animations.play('left')
+    } else {
+      player.animations.play('jump_left')
+    }
+
   } else if (cursor.right.isDown) {
     //  Move to the right
     player.body.velocity.x = 150
-    player.animations.play('right')
+
+    if(hitPlatform) {
+      player.animations.play('right')
+    } else {
+      player.animations.play('jump_right')
+    }
   } else {
     //  Stand still
     player.animations.stop()

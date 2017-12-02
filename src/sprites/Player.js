@@ -14,6 +14,9 @@ export default class extends Phaser.Sprite {
     this.animations.add('left', [8, 9, 10, 11], 10, true)
     this.animations.add('right', [12, 13, 14, 15], 10, true)
 
+    this.animations.add('jump_left', [9], 10, true)
+    this.animations.add('jump_right', [12], 10, true)
+
     this.maxHealth = 100
     this.health = this.maxHealth
 
