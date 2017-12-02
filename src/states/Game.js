@@ -7,14 +7,14 @@ export default class extends Phaser.State {
   preload () {}
 
   create () {
-    const bannerText = 'Phaser + ES6 + Webpack'
-    let banner = this.add.text(this.world.centerX, this.game.height - 80, bannerText)
-    banner.font = 'Bangers'
-    banner.padding.set(10, 16)
-    banner.fontSize = 40
-    banner.fill = '#77BFA3'
-    banner.smoothed = false
-    banner.anchor.setTo(0.5)
+    this.physics.startSystem(Phaser.Physics.ARCADE)
+
+    this.world.setBounds(0, 0, 1920, 1130)
+
+    this.cursors = this.input.keyboard.createCursorKeys()
+
+    //  A simple background for our game
+    this.add.sprite(0, 0, 'background')
 
     this.mushroom = new Mushroom({
       game: this.game,
@@ -24,6 +24,34 @@ export default class extends Phaser.State {
     })
 
     this.game.add.existing(this.mushroom)
+    this.camera.follow(this.mushroom)
+    this.cotstructGround()
+  }
+
+  update () {
+    if (this.cursors.left.isDown) {
+      this.mushroom.x -= 4
+    } else if (this.cursors.right.isDown) {
+      this.mushroom.x += 4
+    }
+
+    if (this.cursors.up.isDown) {
+      this.mushroom.y -= 4
+    } else if (this.cursors.down.isDown) {
+      this.mushroom.y += 4
+    }
+
+    this.world.wrap(this.mushroom, 0, true)
+  }
+
+  cotstructGround () {
+    this.ground = this.add.group()
+    this.ground.enableBody = true
+    // this.ground.body.immovable = true
+    for (var index = 0; index < 39; index += 1) {
+      var block = this.ground.create(index * 50, this.world.height - 50, 'block')
+      block.body.immovable = true
+    }
   }
 
   render () {
