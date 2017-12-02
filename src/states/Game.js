@@ -31,10 +31,10 @@ export default class extends Phaser.State {
   }
 
   cotstructGround () {
-    this.ground = this.add.group()
-    this.ground.enableBody = true
+    this.game.ground = this.add.group()
+    this.game.ground.enableBody = true
     for (var index = 0; index < 39; index += 1) {
-      var block = this.ground.create(index * 50, this.world.height - 50, 'block')
+      var block = this.game.ground.create(index * 50, this.world.height - 50, 'block')
       block.body.immovable = true
     }
   }
